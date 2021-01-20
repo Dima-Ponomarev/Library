@@ -1,1 +1,33 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+body {
+  font-size: 10px;
+  font-family: 'Fraunces', serif;
+}
+
+.wrapper {
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.header {
+  min-height: 10vh;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-bottom: 1px solid #aaa;
+}
+
+.header div {
+  width: 20%;
+}
+/*# sourceMappingURL=style.css.map */
