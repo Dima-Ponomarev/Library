@@ -16,13 +16,72 @@ body{
 
 .header{
     min-height: 10vh;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     
     display: flex;
     align-items: center;
     border-bottom: 1px solid #aaa;
 
-    div{
-        width: 20%;
+    .nav{
+        padding: 0 1rem;
+        margin: 0 auto;
+
+        width:60%;
     }
 }
+
+.main{
+    padding: 2rem 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+
+    width: 60%;
+    margin: 0 auto;
+}
+
+.book-card{
+    margin: 0 2rem 1rem 2rem;
+    border: 1px solid #aaa;
+    border-radius: 0.5rem;
+
+    min-height: 10vh;
+}
+
+.title{
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 0 1.5rem 0.5rem 1.5rem;
+}
+
+.author{
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: italic;
+    text-align: end;
+    padding: 0 0.5rem 0.5rem 0;
+}
+
+.pages, .completion{
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem 0;
+
+    border-top: 1px solid #aaa;
+}
+
+.completion{
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.book-read{
+    background-color: rgb(163, 221, 168);
+}
+
+.book-not-read{
+    background-color: rgb(245, 149, 149);
+}
+
