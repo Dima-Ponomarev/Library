@@ -222,3 +222,19 @@ input[type="checkbox"] {
     margin: 0 0 0 auto;
     font-weight: 700;
 }
+
+.footer-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translate(50%, 0);
+    padding: 1rem;
+    p{
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
