@@ -1,11 +1,12 @@
 * {
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
+  position: relative;
   font-size: 10px;
   font-family: 'Fraunces', serif;
 }
@@ -28,9 +29,52 @@ body {
 }
 
 .header .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0 1rem;
   margin: 0 auto;
-  width: 60%;
+  width: 50%;
+}
+
+.btn {
+  color: white;
+  background-color: black;
+  padding: 0 1rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  outline: none;
+  font-size: 1.6rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.add-book-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-book-btn svg {
+  fill: white;
+}
+
+.add-book-btn:hover svg {
+  fill: black;
 }
 
 .main {
@@ -43,18 +87,19 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: start;
-  width: 60%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
   margin: 0 auto;
 }
 
 .book-card {
-  margin: 0 2rem 1rem 2rem;
+  margin: 0 1rem 2rem 2rem;
   border: 1px solid #aaa;
   border-radius: 0.5rem;
   min-height: 10vh;
+  min-width: 15vw;
 }
 
 .title {
@@ -89,5 +134,68 @@ body {
 
 .book-not-read {
   background-color: #f59595;
+}
+
+.new-book-popup {
+  position: fixed;
+  top: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: black;
+  opacity: 0.7;
+  display: none;
+}
+
+.new-book-popup.active {
+  display: block;
+}
+
+.new-book-form {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 2rem;
+  border: 1px solid #aaa;
+  border-radius: 1rem;
+  background-color: white;
+  display: none;
+}
+
+.new-book-form.active {
+  display: block;
+}
+
+.label {
+  font-size: 2rem;
+  padding: 0 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-family: 'Fraunces', serif;
+}
+
+input[type="checkbox"] {
+  height: 25px;
+  width: 25px;
+}
+
+.submit-button {
+  display: block;
+  padding: 1rem;
+  margin: 1rem auto 0 auto;
+  font-family: 'Fraunces', serif;
+  background: #000;
+  color: white;
+}
+
+.close-form-btn {
+  display: block;
+  margin: 0 0 0 auto;
+  font-weight: 700;
 }
 /*# sourceMappingURL=style.css.map */

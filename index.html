@@ -12,12 +12,33 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div class="nav"><h1>Library</h1></div>            
+            <div class="nav">
+                <h1>Library</h1>
+                <div class="add-book-btn btn">
+                    <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="24px" height="24px"><path fill-rule="evenodd" d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z"/></svg>
+                    <p>New Book</p> 
+                </div>
+            </div>            
         </header>
         <main class="main">
-
+            
         </main>
         <footer class="footer"></footer>
     </div>
+    <div class="new-book-popup"> </div>
+    <div class="new-book-form">
+        <button class="close-form-btn btn">X</button>
+        <form action="#" name="book-form">
+            <label for="ftitle" class="label">Book title: </label> <br>
+            <input type="text" id="ftitle" name="ftitle" class="input" required> <br>
+            <label for="fauthor" class="label">Book's author: </label> <br>
+            <input type="text" id="fauthor" name="fauthor" class="input" required> <br>
+            <label for="fpagenum" class="label">Number of pages: </label> <br>
+            <input type="number" id="fpagenum" name="fpagenum" class="input" required> <br>
+            <label for="fread" class="label">Have you read the book? </label>
+            <input type="checkbox" id="fread" name="fread"> <br>
+            <input type="button" name="submit" class="submit-button btn" value="Add New Book">
+        </form>
+    </div>      
 </body>
 </html>
