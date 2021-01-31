@@ -25,17 +25,6 @@ Book.prototype.info = function() {
 
 //------------------Functions-------------------//
 
-function deleteBookHandler(e){
-    e.target.parentElement.remove();
-    const targetPosition = parseInt(e.target.parentElement.dataset.position);
-    myLibrary.splice(targetPosition, 1);
-    if(targetPosition < myLibrary.length ){
-        const library = document.querySelectorAll('.book-card');
-        for(let i = targetPosition; i < myLibrary.length; i++){
-            library[i].dataset.position = i;
-        }
-    }
-}
 
 function renderBook(book, root, position){
     const card = document.createElement('div');
@@ -57,6 +46,7 @@ function renderBook(book, root, position){
         bookRead.textContent = 'Book is not read';
         bookRead.className = 'completion book-not-read';
     }
+    bookRead.addEventListener('click', (e) => toggleReadStatusHandler(e));
     card.appendChild(bookTitle);
     card.appendChild(bookAuthor);
     card.appendChild(bookPages);
@@ -65,6 +55,8 @@ function renderBook(book, root, position){
     const deleteBtn = document.createElement('div');
     deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6v18h18v-18h-18zm5 14c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm5 0c0 .552-.448 1-1 1s-1-.448-1-1v-10c0-.552.448-1 1-1s1 .448 1 1v10zm4-18v2h-20v-2h5.711c.9 0 1.631-1.099 1.631-2h5.315c0 .901.73 2 1.631 2h5.712z"/></svg>'
     deleteBtn.className = 'delete-btn';
+
+
     deleteBtn.addEventListener('click', (e) => deleteBookHandler(e));
     
     card.appendChild(deleteBtn);
@@ -85,7 +77,31 @@ function renderLibrary(library, root){
     });
 }
 
-function togglePopup(){
+function deleteBookHandler(e){
+    e.target.parentElement.remove();
+    const targetPosition = parseInt(e.target.parentElement.dataset.position);
+    myLibrary.splice(targetPosition, 1);
+    if(targetPosition < myLibrary.length ){
+        const library = document.querySelectorAll('.book-card');
+        for(let i = targetPosition; i < myLibrary.length; i++){
+            library[i].dataset.position = i;
+        }
+    }
+}
+
+function toggleReadStatusHandler(e){
+    if(e.target.classList.contains('book-read')){
+        e.target.textContent = 'Book is not read';
+        e.target.className = 'completion book-not-read';
+        myLibrary[parseInt(e.target.parentElement.dataset.position)].bookRead = false;
+    } else{
+        e.target.textContent = 'Book is read';
+        e.target.className = 'completion book-read';
+        myLibrary[parseInt(e.target.parentElement.dataset.position)].bookRead = true;
+    }
+}
+
+function togglePopupHandler(){
     const newBookPopup = document.querySelector('.new-book-popup');
     newBookPopup.classList.toggle('active');
     const newBookForm = document.querySelector('.new-book-form');
@@ -105,9 +121,9 @@ function submitNewBookHandler(){
 
 //------------------Event Listeners-------------------//
 
-addBookBtn.addEventListener('click', togglePopup);
+addBookBtn.addEventListener('click', togglePopupHandler);
 
-closeFormBtn.addEventListener('click', togglePopup);
+closeFormBtn.addEventListener('click', togglePopupHandler);
 
 submitNewBookBtn.addEventListener('click', submitNewBookHandler);
 
