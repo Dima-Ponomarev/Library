@@ -23,6 +23,7 @@ Book.prototype.info = function() {
     }
 }
 
+
 //------------------Functions-------------------//
 
 
@@ -67,12 +68,15 @@ function renderBook(book, root, position){
 function addBookToLibrary(title, author, pageNum, bookRead, library){
     library.push(new Book(title, author, pageNum, bookRead));
     renderBook(library[library.length - 1], mainContent, library.length - 1);
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
 
 
 
-function renderLibrary(library, root){
-    library.forEach((book, index) => {
+function renderLibrary(root){
+    const storedLibrary = JSON.parse(localStorage.getItem('myLibrary'));
+    myLibrary = [...storedLibrary];
+    storedLibrary.forEach((book, index) => {
         renderBook(book, root, index);
     });
 }
@@ -87,6 +91,7 @@ function deleteBookHandler(e){
             library[i].dataset.position = i;
         }
     }
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 function toggleReadStatusHandler(e){
@@ -99,6 +104,7 @@ function toggleReadStatusHandler(e){
         e.target.className = 'completion book-read';
         myLibrary[parseInt(e.target.parentElement.dataset.position)].bookRead = true;
     }
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 function togglePopupHandler(){
@@ -115,7 +121,7 @@ function submitNewBookHandler(){
         formAuthor.value = '';
         formNumPages.value = '';
         formRead.checked = false;
-        togglePopup();
+        togglePopupHandler();
     }
 }
 
@@ -130,10 +136,4 @@ submitNewBookBtn.addEventListener('click', submitNewBookHandler);
 
 
 
-addBookToLibrary('Harry Potter', 'J.K. Roling', 500, true, myLibrary);
-addBookToLibrary('Harry Potter', 'J.K. Roling', 500, false, myLibrary);
-addBookToLibrary('Harry Potter', 'J.K. Roling', 500, false, myLibrary);
-addBookToLibrary('Harry Pottefaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaar', 'J.K. Roling', 500, false, myLibrary);
-
-
-//renderLibrary(myLibrary, mainContent)
+renderLibrary(mainContent);
