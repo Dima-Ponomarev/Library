@@ -85,12 +85,36 @@ body{
 }
 
 .book-card{
+    position: relative;
+
     margin: 0 1rem 2rem 2rem;
     border: 1px solid #aaa;
     border-radius: 0.5rem;
 
     min-height: 10vh;
     min-width: 15vw;
+
+    &:hover .delete-btn{
+        display: inline-block;
+    }
+}
+
+.delete-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    padding: 0.1rem;
+    opacity: 0.3;
+    cursor: pointer;
+
+    display: none;
+    &:hover{
+        opacity: 1;
+    }
+    svg{
+        pointer-events: none;
+    }
 }
 
 .title{
